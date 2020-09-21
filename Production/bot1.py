@@ -41,7 +41,7 @@ This gets the info about the bot.
 async def getInfo(ctx):
     text = '```View captured data at http://dadywarbucks.xyz/logs.json \n'
     text += 'View more info at http://dadywarbucks.xyz/botInfo.php \n'
-    text += 'View code at https://github.com/sschatz1997/MachineLearning_discordStatus \n'
+    text += 'View code at https://github.com/sschatz1997/MLDS_Public \n'
     text += 'join the support server here https://discord.gg/cpcGmu5 !\n'
     text += 'join the Subreddit here https://www.reddit.com/r/MLDS_bot/ !\n'
     text += 'View Commands by typing !!commands1\n```'

@@ -3,7 +3,7 @@
 """
 File:  [ bot1.py ]
 Author: Samuel Schatz
-Date: 9/17/2020 
+Date: 1/14/2021
 Description: The main bot for this project.
 """
 # bot1.py
@@ -28,7 +28,10 @@ from functions1 import addOptOut, regServer
 
 token = str(config.token)
 
-bot = commands.Bot(command_prefix='!!')
+# intents are a new feature
+intents = discord.Intents().all()#members = True, presences = True)
+
+bot = commands.Bot(command_prefix='!!', intents = intents)
 
 
 def datetimeNow():
@@ -76,6 +79,7 @@ This returns the number of entries.
 """
 @bot.command()
 async def count(ctx):
+    print('count')
     num = getCount()
     await ctx.send("{} || Entries: {}.".format(str(ctx.message.author.mention), str(num)))
 
@@ -123,7 +127,7 @@ This adds the presence to the bot when it starts.
 """
 @bot.event
 async def on_ready():
-    #print("RUNNING YE HAW!!")
+    print("RUNNING YE HAW!!")
     #copy()
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="!!commands1 to see commands"))
 
@@ -141,15 +145,21 @@ This logs the change.
 async def on_member_update(before, after):
     username = str(before.name)
     optedOut = getOptedOut()
-    if username not in optedOut:
-        if str(before.status) == "online":
-            if str(after.status) == "offline":
-                temp = [str(after.status), datetimeNow()]
-                tolog(temp)
-        if str(before.status) == "offline":
-            if str(after.status) == "online":
-                temp = [str(after.status), datetimeNow()]
-                tolog(temp)
+    #print('entered')
+    t = datetime.today().strftime('%M')
+    #print('min {}\n'.format(t))
+    if int(t)%5 == 0: # only collecting every 5 mins
+        #print('5\n')
+        if username not in optedOut:
+            if str(before.status) == "online":
+                if str(after.status) == "offline":
+                    temp = [str(after.status), datetimeNow()]
+                    tolog(temp)
+            if str(before.status) == "offline":
+                if str(after.status) == "online":
+                    temp = [str(after.status), datetimeNow()]
+                    tolog(temp)
+    del t
 
     
 bot.run(token)

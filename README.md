@@ -18,4 +18,4 @@ Commands:
 ```
 <p>View data <a href="http://dadywarbucks.xyz/logs.json">here!</a></p>
 <p>Join Discord Server <a href="https://discord.gg/cpcGmu5">here!</a></p>
-<p>Join Sub reddit<a href="https://www.reddit.com/r/MLDS_bot/">here!</a></p>
+<p>Join Sub reddit <a href="https://www.reddit.com/r/MLDS_bot/">here!</a></p>
